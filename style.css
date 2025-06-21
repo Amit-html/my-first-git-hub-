@@ -222,7 +222,7 @@ button:hover {
 }
 
 .options {
-    background-color: #2e302f;
+    background-color: #b4e5d6;
     color: rgb(218, 51, 51);
     padding: 10px 20px;
     border: none;
@@ -230,7 +230,10 @@ button:hover {
     cursor: pointer;
     font-size: 16px;
 }
-
+.options:hover {
+    background-color: #3b3f3e;
+    color: rgb(236, 217, 217);
+}
 /* Individual Logos */
 .logos {
     width: 150px; /* Adjust width */
