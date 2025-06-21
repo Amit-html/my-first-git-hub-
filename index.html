@@ -2,11 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Section</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
 </head>
 <body>
-    
+
+    <!-- Header & Scrolling Section Container -->
+    <div class="main-container">
+        <!-- Header Section -->
+        <div class="headers">
+            <div class="header">
+                <div class="side-header">
+                    <span class="logo-name">SLICk</span>
+                </div>
+                <div class="main-header">
+                    <ul>
+                        <li>Home</li>
+                        <li>Shop</li>
+                        <li>Collection</li>
+                    </ul>
+                </div>
+                <div class="key-header" id="upper_header">
+                    <button id="search-btn"><img src="search-interface-symbol.png" alt="search"></button>
+                    <div class="options">
+                        <img src="trolley.png" alt="options">
+                    </div>
+
+                    <!-- Sidebar that is hidden -->
+                    <div class="sidebar">
+                        <button class="close-btn">&times;</button>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <input type="text" id="search-bar" placeholder="Search..." class="hidden">
+            </div>
+
+            <!-- Hero Section -->
+            <div class="header-view">
+                <div class="header-left">
+                    <h1>Find Your Sole Mate With Us</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, excepturi perferendis...</p>
+                    <button>Shop Now</button>
+                </div>
+                <span class="ultimate">ULTIMATE</span>
+                <div class="header-right">
+                    <img src="Untitled design(109) 2.png" alt="shoes" class="shoes">
+                    <h4>Trendy Slick Pro</h4>
+                    <h6>₹3999.00</h6> 
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scrolling Section -->
+        <div class="scroll-track">
+            <div class="scroller">
+                <span class="logos">1</span>
+                <span class="logos">2</span>
+                <span class="logos">3</span>
+                <span class="logos">4</span>
+                <span class="logos">5</span>
+                <span class="logos">6</span>
+                <span class="logos">1</span>
+                <span class="logos">2</span>
+                <span class="logos">3</span>
+                <span class="logos">4</span>
+                <span class="logos">1</span>
+                <span class="logos">2</span>
+                <span class="logos">3</span>
+                <span class="logos">4</span>
+                <span class="logos">5</span>
+                <span class="logos">6</span>
+                <span class="logos">1</span>
+                <span class="logos">2</span>
+                <span class="logos">3</span>
+                <span class="logos">4</span>
+            </div>
+        </div>
+    </div>
+   
 </body>
 </html>

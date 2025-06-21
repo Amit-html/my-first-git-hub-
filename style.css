@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+/* General Page Styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: #e3d9d3;
+    font-family: Arial, sans-serif;
+}
+
+/* Main Container */
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+}
+
+/* Header Section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(205, 230, 222);
+}
+
+.logo-name {
+    font-family: poppins;
+}
+
+/* Header Sections */
+.side-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-evenly; /* Equal horizontal spacing */
+    align-items: center; /* Align items vertically */
+    width: 100%; /* Full width */
+    padding: 10px; /* Add spacing */
+}
+
+.main-header ul {
+    display: flex; /* Makes the list items appear in a row */
+    justify-content: space-evenly; /* Spaces them evenly */
+    width: 100%; /* Ensures full width */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+    list-style: none; /* Removes bullet points */
+}
+
+.main-header ul li {
+    padding: 10px 20px; /* Add spacing around list items */
+}
+
+.key-header {
+    display: flex;
+    gap: 10px;
+}
+
+.hidden {
+    display: none; /* Hide initially */
+}
+
+#search-bar {
+    width: 50%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #e4d5d5;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Hero Section */
+.header-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    padding: 40px 20px;
+    background-color: #c6bab2;
+}
+
+.ultimate {
+    display: inline-block;
+    transform: rotate(90deg); /* Rotates the whole word */
+    font-size: 48px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    letter-spacing: 5px;
+    position: absolute;
+    left: 50%;
+    translate: -50px;
+    top: 11%;
+    transform-origin: left bottom; /* Ensures proper rotation */
+}
+
+.header-left {
+    max-width: 40%;
+    align-content: center;
+    justify-content: center;
+    translate: 0%;
+}
+
+.header-left h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.header-left p {
+    font-size: 16px;
+    color: #333;
+}
+
+.shoes {
+    height: inherit;
+    width: 50%;
+    position: relative;
+    left: 25%;
+}
+
+.header-right {
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -350px; /* Initially hidden (off-screen) */
+    width: 250px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
+    backdrop-filter: blur(10px); /* Blur background for modern effect */
+    color: white;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out; /* Smooth sliding effect */
+    z-index: 1000; /* Ensure sidebar is on top */
+}
+
+/* Sidebar Visible */
+.sidebar.active {
+    transform: translateX(350px); /* Move into view */
+}
+
+/* Sidebar Close Button (Div) */
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 1100; /* Ensure close button is on top of sidebar */
+}
+
+/* Sidebar List Items */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+button {
+    background-color: #b4e5d6;
+    color: rgb(236, 217, 217);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #3b3f3e;
+}
+
+/* Scrolling Section */
+.scrollTrack {
+    overflow: hidden;
+    width: 100%;
+    background-color: #08000000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    position: relative;
+}
+
+/* Scrolling Container */
+.scroller {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    background-color: #333;
+    gap: 20px;
+    width: max-content; /* Prevent shrinking */
+    animation: scrollLoop 10s linear infinite; /* Infinite smooth scrolling */
+}
+
+.options {
+    background-color: #2e302f;
+    color: rgb(218, 51, 51);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Individual Logos */
+.logos {
+    width: 150px; /* Adjust width */
+    height: 100px;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Continuous Scrolling Animation */
+@keyframes scrollLoop {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% / 2)); /* Moves exactly half of the full width */
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-left {
+        max-width: 90%;
+    }
+
+    .scroller {
+        animation: scroll 15s linear infinite;
+    }
+
+    .logos {
+        width: 150px;
+        height: 80px;
+        font-size: 18px;
+    }
+}
