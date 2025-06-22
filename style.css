@@ -279,4 +279,71 @@ button:hover {
         height: 80px;
         font-size: 18px;
     }
+}.trending-section {
+  background-color: #f8f8f8;
+  padding: 40px 20px;
+}
+
+.trending-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.trending-title {
+  flex: 0 0 25%; /* ~25% width */
+}
+
+.trending-title h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.trending-title p {
+  font-size: 16px;
+  color: #555;
+}
+
+.trending-scroll-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.trending-items {
+  display: flex;
+  gap: 20px;
+  animation: scroll-left 10s linear infinite;
+}
+
+.trending-section:hover .trending-items {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.trending-items .item {
+  min-width: 200px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.trending-items img {
+  width: 100%;
+  max-width: 150px;
+  margin-bottom: 10px;
 }

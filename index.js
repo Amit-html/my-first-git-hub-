@@ -41,4 +41,13 @@ function handleSearchBarFocus() {
             searchBar.classList.add("hidden"); // Hide search bar if empty
         }
     });
+    searchBar.addEventListener("input", function() {
+        if (searchBar.value !== "") {
+            searchBar.classList.remove("hidden"); // Show search bar when typing
+        } else {
+            searchBar.classList.add("hidden"); // Hide if empty
+        }
+    });
+
+  
 }
