@@ -1,23 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
 
 /* General Page Styling */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    background-color: #e3d9d3;
-    font-family: Arial, sans-serif;
-}
 
 /* Main Container */
 .main-container {
-    width: 90%;
+    width:  100%;
     max-width: 1200px;
+    height: inherit;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
     border-radius: 10px;
-    overflow: hidden;
+    overflow: hidden; /* Ensures no overflow from rounded corners */
+    margin: 20px;
     background: white;
 }
 
@@ -32,6 +25,8 @@ body {
 
 .logo-name {
     font-family: poppins;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 /* Header Sections */
