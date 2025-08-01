@@ -1,102 +1,101 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Element selectors
     const searchBtn = document.getElementById("search-btn");
     const searchBar = document.getElementById("search-bar");
     const mainHeader = document.querySelector(".main-header");
-
-    document.getElementById("homeButton").addEventListener("click", () => {
-        window.location.href = "/";  // or "index.html" if you're testing locally
-    });
-
-    searchBtn.addEventListener("click", function () {
-        if (searchBar.classList.contains("hidden")) {
-            searchBar.classList.remove("hidden"); // Show search bar
-            mainHeader.style.display = "none"; // Hide menu
-            searchBar.focus(); // Auto-focus
-        } else {
-            searchBar.classList.add("hidden"); // Hide search bar
-            mainHeader.style.display = "flex"; // Restore menu
-        }
-    });
-
-    // Select elements
+    const homeButton = document.getElementById("homeButton");
     const sidebar = document.querySelector(".sidebar");
     const optionsBtn = document.querySelector(".options");
     const closeBtn = document.querySelector(".close-btn");
+    const carousel = document.querySelector('.carousel');
+    const card = document.querySelector('.maindiv');
+    const cardWidth = card ? card.offsetWidth + 10 : 0;
 
-    // Function to toggle sidebar when clicking the options button
-    optionsBtn.addEventListener("click", function () {
-        sidebar.classList.toggle("active"); // Toggle sidebar visibility
-    });
-
-    // Function to close sidebar when clicking the close (X) button
-    closeBtn.addEventListener("click", function () {
-        sidebar.classList.remove("active"); // Ensures sidebar closes
-    });
-});
-// Function to handle search bar focus and blur events
-function handleSearchBarFocus() {
-    const searchBar = document.getElementById("search-bar");
-    searchBar.addEventListener("focus", function () {
-        searchBar.classList.remove("hidden"); // Show search bar
-    });
-
-    searchBar.addEventListener("blur", function () {
-        if (searchBar.value === "") {
-            searchBar.classList.add("hidden"); // Hide search bar if empty
-        }
-    });
-    searchBar.addEventListener("input", function () {
-        if (searchBar.value !== "") {
-            searchBar.classList.remove("hidden"); // Show search bar when typing
-        } else {
-            searchBar.classList.add("hidden"); // Hide if empty
-        }
-    });
-
-
-}
-
-const carousel = document.querySelector('.carousel');
-const cardWidth = document.querySelector('.maindiv').offsetWidth + 10;
-
-//document.querySelector('.carousel-btn-left').addEventListener('click', () => {
-  //  scroller.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-//});
-
-//document.querySelector('.carousel-btn-right').addEventListener('click', () => {
-  //  scroller.scrollBy({ left: cardWidth, behavior: 'smooth' });
-//});
-
-// Auto Scroll with proper reset and cooldown
-let scrollSpeed = 1;
-let isResetting = false;
-let autoScrollInterval = null;
-
-function autoScroll() {
-    if (!isResetting) {
-        carousel.scrollLeft += scrollSpeed;
+    // 🔹 HOME BUTTON CLICK
+    if (homeButton) {
+        homeButton.addEventListener("click", () => {
+            window.location.href = "/"; // Or "index.html" locally
+        });
     }
 
-    if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 1) {
-        // Temporarily stop scroll to prevent loop conflict
-        isResetting = true;
-        carousel.scrollLeft = 0;
-
-
-        // Cooldown: wait 300ms before continuing auto-scroll
-        setTimeout(() => {
-            isResetting = false;
-        }, 300);
+    // 🔹 SEARCH BUTTON TOGGLE
+    if (searchBtn && searchBar && mainHeader) {
+        searchBtn.addEventListener("click", function () {
+            const isHidden = searchBar.classList.contains("hidden");
+            searchBar.classList.toggle("hidden", !isHidden);
+            mainHeader.style.display = isHidden ? "none" : "flex";
+            if (isHidden) searchBar.focus();
+        });
     }
 
-    autoScrollInterval = requestAnimationFrame(autoScroll);
-}
+    // 🔹 SEARCH BAR BEHAVIOUR ON FOCUS / BLUR / INPUT
+    if (searchBar) {
+        searchBar.addEventListener("focus", () => {
+            searchBar.classList.remove("hidden");
+        });
 
-autoScroll();
+        searchBar.addEventListener("blur", () => {
+            if (searchBar.value === "") {
+                searchBar.classList.add("hidden");
+                mainHeader.style.display = "flex";
+            }
+        });
 
-carousel.addEventListener('mouseenter', () => {
-    cancelAnimationFrame(autoScrollInterval);
-});
-carousel.addEventListener('mouseleave', () => {
-    autoScrollInterval = requestAnimationFrame(autoScroll);
+        searchBar.addEventListener("input", () => {
+            if (searchBar.value !== "") {
+                searchBar.classList.remove("hidden");
+            } else {
+                searchBar.classList.add("hidden");
+            }
+        });
+    }
+
+    // 🔹 SIDEBAR OPEN/CLOSE
+    if (optionsBtn && sidebar) {
+        optionsBtn.addEventListener("click", function () {
+            sidebar.classList.toggle("active");
+        });
+    }
+
+    if (closeBtn && sidebar) {
+        closeBtn.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+        });
+    }
+
+    // 🔹 AUTO SCROLL CAROUSEL
+    let scrollSpeed = 1;
+    let isResetting = false;
+    let autoScrollInterval = null;
+
+    function autoScroll() {
+        if (!carousel) return;
+
+        if (!isResetting) {
+            carousel.scrollLeft += scrollSpeed;
+        }
+
+        if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 1) {
+            isResetting = true;
+            carousel.scrollLeft = 0;
+            setTimeout(() => {
+                isResetting = false;
+            }, 300);
+        }
+
+        autoScrollInterval = requestAnimationFrame(autoScroll);
+    }
+
+    if (carousel) {
+        autoScroll();
+
+        // Pause scroll on mouse hover
+        carousel.addEventListener('mouseenter', () => {
+            cancelAnimationFrame(autoScrollInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            autoScrollInterval = requestAnimationFrame(autoScroll);
+        });
+    }
 });
