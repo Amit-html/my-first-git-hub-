@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchBar = document.getElementById("search-bar");
     const mainHeader = document.querySelector(".main-header");
 
+    document.getElementById("homeButton").addEventListener("click", () => {
+        window.location.href = "/";  // or "index.html" if you're testing locally
+    });
+
     searchBtn.addEventListener("click", function () {
         if (searchBar.classList.contains("hidden")) {
             searchBar.classList.remove("hidden"); // Show search bar
@@ -20,28 +24,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeBtn = document.querySelector(".close-btn");
 
     // Function to toggle sidebar when clicking the options button
-    optionsBtn.addEventListener("click", function() {
+    optionsBtn.addEventListener("click", function () {
         sidebar.classList.toggle("active"); // Toggle sidebar visibility
     });
 
     // Function to close sidebar when clicking the close (X) button
-    closeBtn.addEventListener("click", function() {
+    closeBtn.addEventListener("click", function () {
         sidebar.classList.remove("active"); // Ensures sidebar closes
     });
 });
 // Function to handle search bar focus and blur events
 function handleSearchBarFocus() {
     const searchBar = document.getElementById("search-bar");
-    searchBar.addEventListener("focus", function() {
+    searchBar.addEventListener("focus", function () {
         searchBar.classList.remove("hidden"); // Show search bar
     });
-    
-    searchBar.addEventListener("blur", function() {
+
+    searchBar.addEventListener("blur", function () {
         if (searchBar.value === "") {
             searchBar.classList.add("hidden"); // Hide search bar if empty
         }
     });
-    searchBar.addEventListener("input", function() {
+    searchBar.addEventListener("input", function () {
         if (searchBar.value !== "") {
             searchBar.classList.remove("hidden"); // Show search bar when typing
         } else {
@@ -49,5 +53,50 @@ function handleSearchBarFocus() {
         }
     });
 
-  
+
 }
+
+const carousel = document.querySelector('.carousel');
+const cardWidth = document.querySelector('.maindiv').offsetWidth + 10;
+
+//document.querySelector('.carousel-btn-left').addEventListener('click', () => {
+  //  scroller.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+//});
+
+//document.querySelector('.carousel-btn-right').addEventListener('click', () => {
+  //  scroller.scrollBy({ left: cardWidth, behavior: 'smooth' });
+//});
+
+// Auto Scroll with proper reset and cooldown
+let scrollSpeed = 1;
+let isResetting = false;
+let autoScrollInterval = null;
+
+function autoScroll() {
+    if (!isResetting) {
+        carousel.scrollLeft += scrollSpeed;
+    }
+
+    if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 1) {
+        // Temporarily stop scroll to prevent loop conflict
+        isResetting = true;
+        carousel.scrollLeft = 0;
+
+
+        // Cooldown: wait 300ms before continuing auto-scroll
+        setTimeout(() => {
+            isResetting = false;
+        }, 300);
+    }
+
+    autoScrollInterval = requestAnimationFrame(autoScroll);
+}
+
+autoScroll();
+
+carousel.addEventListener('mouseenter', () => {
+    cancelAnimationFrame(autoScrollInterval);
+});
+carousel.addEventListener('mouseleave', () => {
+    autoScrollInterval = requestAnimationFrame(autoScroll);
+});
